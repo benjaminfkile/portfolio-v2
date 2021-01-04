@@ -1,0 +1,34 @@
+.Skills_Panel_One{
+    width: calc(100vw - 45px);
+    margin-top: calc(50vh - 200px);
+    margin-bottom: 10px;
+}
+.Skills_Panel_One p{
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 35px;
+}
+#sp1p2{
+    font-size: 20px;
+    color: gray;
+}
+.Skills_Panel_Two{
+    display: flex;
+    width: calc(100vw - 45px);
+}
+.Skills_Panel_Two p{
+    font-size: 25px;
+}
+.Skills_Panel_Two li{
+    font-size: 20px;
+    color: gray;
+}
+.Front_Skills{
+    margin-left: 10px;
+    /* margin-right: 10px; */
+    /* margin-left: auto; */
+}
+.Back_Skills{
+    margin-left: 10px;
+    /* margin-right: auto; */
+}

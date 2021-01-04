@@ -1,0 +1,27 @@
+
+.About_Panel_One{
+    width: calc(100vw - 45px);
+    text-align: left;
+    margin-top: calc(50vh - 200px);
+}
+.About_Panel_One p{
+    font-size: 35px;
+    margin-left: 10px;
+}
+
+.About_Panel_Two{
+    width: calc(100vw - 45px);
+}
+
+.About_Panel_Two p{
+    font-size: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.About_Panel_Two p{
+    color: gray;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}

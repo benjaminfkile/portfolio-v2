@@ -1,0 +1,24 @@
+*{  
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+html, body{
+  background-color: rgb(14,14,27);
+  color: rgb(48,154,115);
+  font-family: 'Maven Pro', sans-serif;
+}
+.App{
+  display: flex;
+  position: fixed;
+  top: 0;
+}
+.Nav_Wrapper{
+  width: 45px;
+  background-color: rgb(9 24 38);
+}
+.Content_Wrapper{
+  height: 100vh;
+  width: calc(100vw - 45px);
+}
+
