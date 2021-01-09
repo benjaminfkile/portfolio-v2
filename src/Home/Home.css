@@ -1,0 +1,32 @@
+.Home{
+  height: 320px;
+  width: calc(100vw - 45px);
+  text-align: left;
+  margin-top: calc(50vh - 160px);
+}
+
+.Home_Panel_One p{
+  margin-left: 15px;
+  font-size: 35px;
+}
+
+.Home_Panel_Two{
+  margin-top: 60px;
+  -webkit-animation: slide-in-fwd-left 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) 2s both;
+  animation: slide-in-fwd-left 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) 2s both;
+}
+
+#hp1p1{
+  -webkit-animation: slide-in-fwd-left 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s both;
+  animation: slide-in-fwd-left 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s both;
+}
+#hp1p2{
+  -webkit-animation: slide-in-fwd-left 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s both;
+  animation: slide-in-fwd-left 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s both;
+}
+
+#hp1p3{
+  -webkit-animation: slide-in-fwd-left 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.8s both;
+  animation: slide-in-fwd-left 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.8s both;
+}
+

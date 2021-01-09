@@ -1,0 +1,22 @@
+.About{
+    height: 320px;
+    width: calc(100vw - 45px);
+    text-align: left;
+    margin-top: calc(50vh - 160px);
+	-webkit-animation: slide-in-fwd-left 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	animation: slide-in-fwd-left 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
+}
+.About_Panel_One p{
+    font-size: 35px;
+    margin-left: 10px;
+}
+.About_Panel_Two p{
+    color: gray;
+    font-size: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    -webkit-animation: slide-in-fwd-left 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s both;
+	animation: slide-in-fwd-left 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s both;
+}

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Nav from './Nav/Nav'
-import Home from './Nav/Home/Home'
-import About from './Nav/About/About'
-import Skills from './Nav/Skills/Skills'
-import Projects from './Nav/Projects/Projects'
-import Contact from './Nav/Contact/Contact'
+import Home from './Home/Home'
+import About from './About/About'
+import Skills from './Skills/Skills'
+import Projects from './Projects/Projects'
+import Contact from './Contact/Contact'
 import './App.css';
 
 class App extends Component {

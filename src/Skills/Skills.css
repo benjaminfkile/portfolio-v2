@@ -1,7 +1,13 @@
-.Skills_Panel_One{
+.Skills{
+    height: 320px;
     width: calc(100vw - 45px);
-    margin-top: calc(50vh - 200px);
+    margin-top: calc(50vh - 160px);
     margin-bottom: 10px;
+}
+.Skills_Panel_One{
+    margin-bottom: 10px;
+    -webkit-animation: slide-in-fwd-left 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s both;
+    animation: slide-in-fwd-left 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s both;
 }
 .Skills_Panel_One p{
     margin-left: 10px;
@@ -15,6 +21,8 @@
 .Skills_Panel_Two{
     display: flex;
     width: calc(100vw - 45px);
+    -webkit-animation: slide-in-fwd-left 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) .8s both;
+	animation: slide-in-fwd-left 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) .8s both;
 }
 .Skills_Panel_Two p{
     font-size: 25px;

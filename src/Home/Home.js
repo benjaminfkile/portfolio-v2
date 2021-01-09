@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Gears from './Gears/Gears'
+import Cube from './Cube/Cube'
 import './Home.css'
 
 class Home extends Component {
@@ -13,7 +13,7 @@ class Home extends Component {
                     <p id="hp1p3">Web Developer.</p>
                 </div>
                 <div className="Home_Panel_Two">
-                    <Gears/>
+                    <Cube />
                 </div>
             </div>
         )
