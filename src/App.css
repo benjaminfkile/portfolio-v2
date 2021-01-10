@@ -34,7 +34,7 @@ html, body{
  * animation slide-in-fwd-left
  * ----------------------------------------
  */
- @-webkit-keyframes slide-in-fwd-left {
+ /* @-webkit-keyframes slide-in-fwd-left {
   0% {
     -webkit-transform: translateZ(-1400px) translateX(-1000px);
             transform: translateZ(-1400px) translateX(-1000px);
@@ -57,4 +57,4 @@ html, body{
             transform: translateZ(0) translateX(0);
     opacity: 1;
   }
-}
+} */
