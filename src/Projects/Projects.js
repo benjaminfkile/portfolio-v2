@@ -16,7 +16,8 @@ class Projects extends Component {
             description: null,
             tech: [],
             photo: null,
-            preview: false
+            preview: false,
+            repoMenu: false
         }
     }
 
@@ -85,12 +86,20 @@ class Projects extends Component {
         this.photoDex = 0
     }
 
+    toggleRepo = () => {
+        if (this.state.repoMenu) {
+            this.setState({ repoMenu: false })
+        } else {
+            this.setState({ repoMenu: true })
+        }
+        console.log(this.state.repoMenu)
+    }
+
     openLink = (args) => {
         window.open(args);
     }
 
     render() {
-        console.log(ProjectStore)
         return (
             <div className="Projects">
                 {!this.state.preview && this.state.db && <div className="Projects_Panel_One">
@@ -101,7 +110,7 @@ class Projects extends Component {
                             <li dangerouslySetInnerHTML={{ __html: tech }} key={Math.random()}></li>
                         ))}
                     </ul>
-                    <div className="Controls">
+                    {!this.state.repoMenu && <div className="Controls">
                         <div className="Nav_Controls">
                             <img id="previous-btn" src="/res/previous.png" alt="" onClick={() => this.pan('-')}></img>
                             <img id="next-btn" src='res/next.png' alt="" onClick={() => this.pan('+')}></img>
@@ -112,15 +121,25 @@ class Projects extends Component {
                             <p>img</p>
                         </div>
                         <div className="Link_Control_Panel">
-                            <img src="/res/visit.png" alt="" onClick={()=> this.openLink(ProjectStore[this.panDex].url)}></img>
-                            <img id="center-img" src="/res/repo.png" alt="" onClick={()=> this.openLink(ProjectStore[this.panDex].repo[0])}></img>
+                            <img src="/res/visit.png" alt="" onClick={() => this.openLink(ProjectStore[this.panDex].url)}></img>
+                            <img id="center-img" src="/res/repo.png" alt="" onClick={this.toggleRepo}></img>
                             <img src="/res/preview.png" alt="" onClick={this.togglePreview}></img>
                         </div>
-                    </div>
-
-                </div>}
-                {this.state.preview && this.state.db && <div className="Projects_Panel_Two">
-
+                    </div>}
+                    {this.state.repoMenu && <div className="Repo_Controls">
+                        <div className="Repo_Nag">
+                        <p id="repo-nag">Choose Repo</p>
+                        </div>
+                        <div className="Repo_Controls_Header">
+                            <p>client</p>
+                            <p>api</p>
+                        </div>
+                        <div className="Repo_Link_Controls">
+                            <img src="/res/previous.png" id="back-img" alt="" onClick={this.toggleRepo}></img>
+                            <img src="/res/client.png" id="client-img" alt="" onClick={() => this.openLink(ProjectStore[this.panDex].repo[0])}></img>
+                            <img src="/res/api.png" id="client-img" alt="" onClick={() => this.openLink(ProjectStore[this.panDex].repo[1])}></img>
+                        </div>
+                    </div>}
                 </div>}
                 {this.state.preview && this.state.db && <div className="Preview">
                     <img id="screenshot" src={this.state.photo} alt=""></img>

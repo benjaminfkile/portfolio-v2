@@ -54,6 +54,30 @@
 margin-left: 20px;
 margin-right: 20px;
 }
+.Repo_Controls{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.Repo_Controls_Header{
+    display: flex;
+    margin-left: calc(100vw - 165px);
+}
+.Repo_Controls_Header p{
+    color: gray;
+    margin: 10px
+}
+.Repo_Link_Controls{
+    margin-left: calc(100vw - 200px);
+    width: 150px;
+}
+#repo-nag{
+    margin-left: calc(100vw - 165px);
+    width: 100px;
+}
+#client-img, #back-img{
+    margin-right: 15px;
+}
 #screenshot{
     display: block;
     margin-left: auto;
