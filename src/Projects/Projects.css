@@ -1,8 +1,64 @@
+.Projects_Panel_One{
+    margin-top: calc(50vh - 200px);
+}
+
+#title{
+    font-size: 35px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+
+#description{
+    font-size: 17px;
+    margin-left: 10px;
+    color: gray;
+}
+#tech{
+    display: flex;
+    margin-left: 10px;
+}
+#tech li{
+    margin-right: 10px;
+    font-size: 40px;
+}
+
+.Controls{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.Link_Controls_Header{
+    display: flex;
+    margin-left: calc(100vw - 205px);
+}
+.Link_Controls_Header p{
+    color: gray;
+    margin: 10px
+}
+.Link_Control_Panel{
+    margin-left: calc(100vw - 200px);
+    width: 140px;
+}
+.Nav_Controls{
+    display: flex;
+    margin-left: calc(100vw - 155px);
+    width: 95px;
+}
+#previous-btn{
+    margin-right: 15px;
+}
+#next-btn{
+    margin-left: 15px;
+}
+#center-img{
+margin-left: 20px;
+margin-right: 20px;
+}
 #screenshot{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20px;
+    margin-top: 8vh;
     width: 250px;
 }
 #collapse-preview{
@@ -10,5 +66,5 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
-    width: 25px;
+    width: 30px;
 }

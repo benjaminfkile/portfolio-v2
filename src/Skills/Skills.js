@@ -42,26 +42,28 @@ class Skills extends Component {
                         <p>
                             Backend
                         </p>
-                        <li>
-                            Java
+                        <ul>
+                            <li>
+                                Java
                             <i className="devicon-java-plain-wordmark colored"></i>
-                        </li>
-                        <li>
-                            Node.js
+                            </li>
+                            <li>
+                                Node.js
                             <i className="devicon-nodejs-plain colored"></i>
-                        </li>
-                        <li>
-                            Express
+                            </li>
+                            <li>
+                                Express
                             <i className="devicon-express-original"></i>
-                        </li>
-                        <li>
-                            PostgreSQL
+                            </li>
+                            <li>
+                                PostgreSQL
                             <i className="devicon-postgresql-plain-wordmark colored"></i>
-                        </li>
-                        <li>
-                            Heroku
+                            </li>
+                            <li>
+                                Heroku
                             <i className="devicon-heroku-original-wordmark colored"></i>
-                        </li>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
