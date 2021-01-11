@@ -116,8 +116,8 @@ class Projects extends Component {
                             <img id="next-btn" src='res/next.png' alt="" onClick={() => this.pan('+')}></img>
                         </div>
                         <div className="Link_Controls_Header">
-                            <p>visit</p>
-                            <p>repo</p>
+                            <p id="first-link-header">visit</p>
+                            <p id="center-link-header">repo</p>
                             <p>img</p>
                         </div>
                         <div className="Link_Control_Panel">
@@ -128,7 +128,7 @@ class Projects extends Component {
                     </div>}
                     {this.state.repoMenu && <div className="Repo_Controls">
                         <div className="Repo_Nag">
-                        <p id="repo-nag">Choose Repo</p>
+                            <p id="repo-nag">Choose Repo</p>
                         </div>
                         <div className="Repo_Controls_Header">
                             <p>client</p>
