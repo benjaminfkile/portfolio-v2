@@ -19,7 +19,7 @@ class Cube extends Component {
                         <i className="devicon-react-original-wordmark colored"></i>
                     </figure>
                     <figure className="face top">
-                    <i className="devicon-java-plain-wordmark colored"></i>
+                    <i className="devicon-nodejs-plain-wordmark"></i>
                     </figure>
                     <figure className="face bottom">
                         <i className="devicon-postgresql-plain-wordmark colored"></i>
