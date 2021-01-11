@@ -24,24 +24,24 @@
 
 .Controls{
     position: fixed;
-    bottom: 0;
+    bottom: 10px;
     width: 100%;
 }
 .Link_Controls_Header{
     display: flex;
-    margin-left: calc(100vw - 205px);
+    margin-left: calc(100vw - 215px);
 }
 .Link_Controls_Header p{
     color: gray;
     margin: 10px
 }
 .Link_Control_Panel{
-    margin-left: calc(100vw - 200px);
+    margin-left: calc(100vw - 210px);
     width: 140px;
 }
 .Nav_Controls{
     display: flex;
-    margin-left: calc(100vw - 155px);
+    margin-left: calc(100vw - 160px);
     width: 95px;
 }
 #previous-btn{
@@ -64,7 +64,7 @@
 }
 .Repo_Controls{
     position: fixed;
-    bottom: 0;
+    bottom: 10px;
     width: 100%;
 }
 .Repo_Controls_Header{
