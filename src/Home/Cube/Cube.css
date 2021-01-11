@@ -3,8 +3,8 @@
     height: 150px;
     position: relative;
     perspective: 1000px;
-    margin-left: 40px;
-    /* margin: 0 auto; */
+    /* margin-left: 40px; */
+    margin: 0 auto;
   }
   #cube {
     width: 100%;
