@@ -1,6 +1,6 @@
 .Home{
   height: 320px;
-  width: calc(100vw - 45px);
+  width: calc(100vw - 60px);
   text-align: left;
   margin-top: calc(50vh - 160px);
 }

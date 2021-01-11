@@ -14,12 +14,12 @@ html, body{
   top: 0;
 }
 .Nav_Wrapper{
-  width: 45px;
+  width: 60px;
   background-color: rgb(9 24 38);
 }
 .Content_Wrapper{
   height: 100vh;
-  width: calc(100vw - 45px);
+  width: calc(100vw - 60px);
 }
 
 /* ----------------------------------------------
