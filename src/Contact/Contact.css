@@ -64,8 +64,9 @@ textarea {
 }
 #Submit_Btn {
 
-    margin-left: 10px;
-    width: 40px;
+    margin-left: -5px;
+    margin-top: -10px;
+    width: 60px;
 }
 #Submit_Btn:hover{
     cursor: pointer;
