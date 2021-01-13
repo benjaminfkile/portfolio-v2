@@ -86,6 +86,9 @@
 #client-img, #back-img{
     margin-right: 15px;
 }
+#screenshot-loader{
+    display: none;
+}
 #screenshot{
     display: block;
     margin-left: auto;

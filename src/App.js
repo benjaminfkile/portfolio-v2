@@ -16,6 +16,7 @@ class App extends Component {
   }
 
   getProjects = () => {
+    // fetch('http://localhost:8000/api/projects')
     fetch('https://lit-tor-99413.herokuapp.com/api/projects')
       .then(response => response.json())
       .then(data => {

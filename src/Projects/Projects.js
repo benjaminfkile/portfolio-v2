@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ProjectStore from '../ProjectStore'
+import Loading from '../Loading/Loading'
 import '../Projects/Projects.css'
 
 class Projects extends Component {
@@ -17,6 +18,7 @@ class Projects extends Component {
             tech: [],
             photo: null,
             preview: false,
+            previewLoaded: false,
             repoMenu: false
         }
     }
@@ -62,15 +64,15 @@ class Projects extends Component {
                 this.panDex -= 1
             }
         }
-        let techTemp = []
+        let techArray = []
 
         for (let i = 0; i < ProjectStore[this.panDex].tech.length; i++) {
-            techTemp.push("<i class=\"" + ProjectStore[this.panDex].tech[i] + "\"></i>")
+            techArray.push("<i class=\"" + ProjectStore[this.panDex].tech[i] + "\"></i>")
         }
         this.setState({
             title: ProjectStore[this.panDex].name,
             description: ProjectStore[this.panDex].description,
-            tech: techTemp,
+            tech: techArray,
             photo: ProjectStore[this.panDex].mobile[this.photoDex]
 
         })
@@ -92,7 +94,10 @@ class Projects extends Component {
         } else {
             this.setState({ repoMenu: true })
         }
-        console.log(this.state.repoMenu)
+    }
+
+    toggleLoaded = () => {
+        this.setState({ previewLoaded: true })
     }
 
     openLink = (args) => {
@@ -142,8 +147,12 @@ class Projects extends Component {
                     </div>}
                 </div>}
                 {this.state.preview && this.state.db && <div className="Preview">
-                    <img id="screenshot" src={this.state.photo} alt=""></img>
-                    <img id="collapse-preview" src='./res/collapse.png' alt="" onClick={this.togglePreview}></img>
+                    <img id="screenshot-loader" src={this.state.photo} alt="" onLoad={this.toggleLoaded}></img>
+                    {this.state.previewLoaded && <img id="screenshot" src={this.state.photo} alt=""></img>}
+                    {this.state.previewLoaded && <img id="collapse-preview" src='./res/collapse.png' alt="" onClick={this.togglePreview}></img>}
+                </div>}
+                {!this.state.previewLoaded && this.state.preview && <div className="Preview_Loading">
+                    <Loading />
                 </div>}
             </div>
         )
