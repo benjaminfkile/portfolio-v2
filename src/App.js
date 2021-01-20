@@ -38,7 +38,7 @@ class App extends Component {
     if (DataStore.length > 1) {
       DataStore.length = 2
     }
-  }
+  }                                                                                                                                          
 
   render() {
     return (
@@ -59,11 +59,11 @@ class App extends Component {
         {!this.state.hasData && !this.state.error && <div className="Gears">
           <Loading />
         </div>}
-        <div className="Error">
+        {this.state.error && <div className="Error">
           <p>
             Error fetching data
           </p>
-        </div>
+        </div>}
       </div>
     );
   }
