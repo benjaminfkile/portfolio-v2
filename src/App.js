@@ -1,57 +1,49 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
-import url from './urlStore'
-import aboutMe from './AboutStore'
+import targetUrl from './apiStore'
 import Nav from './Nav/Nav'
 import Home from './Home/Home'
 import About from './About/About'
 import Skills from './Skills/Skills'
 import Projects from './Projects/Projects'
 import Contact from './Contact/Contact'
-import ProjectStore from './ProjectStore'
+import DataStore from './DataStore'
+import Loading from './Loading/Loading'
 import './App.css';
 
 class App extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      hasData: false,
+      error: false
+    }
+  }
+
   componentDidMount() {
-    this.getAboutP1()
-    this.getAboutP2()
-    this.getProjects()
+    this.dataInterval = setInterval(this.fetchData, 1000)
+    this.fetchData()
   }
 
-  getAboutP1 = () => {
-    fetch(url + 'about-p1')
+  fetchData = () => {
+    fetch(targetUrl + 'get')
       .then(response => response.json())
       .then(data => {
-        aboutMe.p1.push(data[0])
-      }).catch(error => console.log('failed to fetch about'));
-  }
-
-  getAboutP2 = () => {
-    fetch(url + 'about-p2')
-      .then(response => response.json())
-      .then(data => {
-        aboutMe.p2.push(data[0])
-      }).catch(error => console.log('failed to fetch about'));
-  }
-
-  getProjects = () => {
-    fetch(url + 'projects')
-      .then(response => response.json())
-      .then(data => {
-        for (let i = 0; i < data.length; i++) {
-          ProjectStore.push(data[i])
+        DataStore.unshift(data)
+        if (!this.state.hasData) {
+          this.setState({ hasData: true })
         }
-      }).catch(error => console.log('failed to fetch projects'));
+      }).catch(error => this.setState({ error: true }));
+    if (DataStore.length > 1) {
+      DataStore.length = 2
+    }
   }
 
   render() {
     return (
       <div className="App">
-        {/* <div className="Nav_Wrapper">
-          <Nav />
-        </div> */}
-        <div className="Content_Wrapper">
+        {this.state.hasData && !this.state.error && <div className="Content_Wrapper">
           <Switch>
             <Route exact path='/' component={Home} />
             <Route path='/about' component={About} />
@@ -60,9 +52,17 @@ class App extends Component {
             <Route path='/contact' component={Contact} />
             <Route component={Home} />
           </Switch>
-        </div>
-        <div className="Nav_Wrapper">
+        </div>}
+        {this.state.hasData && !this.state.error && <div className="Nav_Wrapper">
           <Nav />
+        </div>}
+        {!this.state.hasData && !this.state.error && <div className="Gears">
+          <Loading />
+        </div>}
+        <div className="Error">
+          <p>
+            Error fetching data
+          </p>
         </div>
       </div>
     );

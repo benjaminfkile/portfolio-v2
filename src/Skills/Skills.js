@@ -1,14 +1,94 @@
 import React, { Component } from 'react'
+import DataStore from '../DataStore'
 import './Skills.css'
 
 class Skills extends Component {
+
+    dbInterval
+    changeInerval
+    mounted = false
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            db: false,
+            p1: null,
+            p1Id: null,
+            leftSkills: null,
+            rightSkills: null,
+            devicons: null
+        }
+    }
+
+    componentDidMount() {
+        this.dbInterval = setInterval(this.listen4DB, 100)
+        this.changeInerval = setInterval(this.listen4Update, 1000)
+        this.mounted = true
+    }
+
+    componentWillUnmount() {
+        this.mounted = false
+        clearInterval(this.changeInerval)
+    }
+
+    listen4DB = () => {
+        let leftTemp = []
+        let rightTemp = []
+        if (this.mounted && DataStore[0] && DataStore[0].skillsP1.length > 0) {
+            clearInterval(this.dbInterval)
+            for (let i = 0; i < DataStore[0].devicons.length; i++) {
+                if (DataStore[0].devicons[i].side === 'l') {
+                    leftTemp.push(DataStore[0].devicons[i])
+                }
+                if (DataStore[0].devicons[i].side === 'r') {
+                    rightTemp.push(DataStore[0].devicons[i])
+                }
+            }
+            this.setState({ db: true, p1: DataStore[0].skillsP1[0].p1, p1Id: DataStore[0].skillsP1[0].id, leftSkills: leftTemp, rightSkills: rightTemp, devicons: DataStore[0].devicons })
+        }
+    }
+
+    listen4Update = () => {
+        let leftTemp = []
+        let rightTemp = []
+        if (this.mounted && (DataStore[0].skillsP1[0].id !== this.state.p1Id)) {
+            this.setState({ db: true, p1: DataStore[0].skillsP1[0].p1, p1Id: DataStore[0].skillsP1[0].id })
+        }
+        if (this.state.devicons.length !== DataStore[0].devicons.length) {
+            for (let i = 0; i < DataStore[0].devicons.length; i++) {
+                if (DataStore[0].devicons[i].side === 'l') {
+                    leftTemp.push(DataStore[0].devicons[i])
+                }
+                if (DataStore[0].devicons[i].side === 'r') {
+                    rightTemp.push(DataStore[0].devicons[i])
+                }
+            }
+            this.setState({ devicons: DataStore[0].devicons, leftSkills: leftTemp, rightSkills: rightTemp })
+        }
+        if (this.state.devicons && this.state.devicons.length === DataStore[0].devicons.length) {
+            for (let i = 0; i < this.state.devicons.length; ++i) {
+                if (this.state.devicons[i].id !== DataStore[0].devicons[i].id) {
+                    for (let i = 0; i < DataStore[0].devicons.length; i++) {
+                        if (DataStore[0].devicons[i].side === 'l') {
+                            leftTemp.push(DataStore[0].devicons[i])
+                        }
+                        if (DataStore[0].devicons[i].side === 'r') {
+                            rightTemp.push(DataStore[0].devicons[i])
+                        }
+                    }
+                    this.setState({ devicons: DataStore[0].devicons, leftSkills: leftTemp, rightSkills: rightTemp })
+
+                }
+            }
+        }
+    }
 
     render() {
         return (
             <div className="Skills">
                 <div className="Skills_Panel_One">
                     <p id="sp1p1">Skills</p>
-                    <p id="sp1p2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                    <p id="sp1p2">{this.state.p1}</p>
                 </div>
                 <div className="Skills_Panel_Two">
                     <div className="Front_Skills">
@@ -16,26 +96,12 @@ class Skills extends Component {
                             Frontend
                         </p>
                         <ul>
-                            <li>
-                                HTML
-                                <i className="devicon-html5-plain-wordmark colored"></i>
-                            </li>
-                            <li>
-                                CSS
-                                <i className="devicon-css3-plain-wordmark colored"></i>
-                            </li>
-                            <li>
-                                Javascript
-                                <i className="devicon-javascript-plain"></i>
-                            </li>
-                            <li>
-                                jQuery
-                                <i className="devicon-jquery-plain-wordmark colored"></i>
-                            </li>
-                            <li>
-                                React.js
-                                 <i className="devicon-react-original-wordmark colored"></i>
-                            </li>
+                            {this.state.leftSkills && this.state.leftSkills.map((devicon, index) => (
+                                <li key={devicon.id}>
+                                    {devicon.title}
+                                    <i className={devicon.link}></i>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                     <div className="Back_Skills">
@@ -43,26 +109,12 @@ class Skills extends Component {
                             Backend
                         </p>
                         <ul>
-                            <li>
-                                Java
-                            <i className="devicon-java-plain-wordmark colored"></i>
-                            </li>
-                            <li>
-                                Node.js
-                            <i className="devicon-nodejs-plain colored"></i>
-                            </li>
-                            <li>
-                                Express
-                            <i className="devicon-express-original"></i>
-                            </li>
-                            <li>
-                                PostgreSQL
-                            <i className="devicon-postgresql-plain-wordmark colored"></i>
-                            </li>
-                            <li>
-                                Heroku
-                            <i className="devicon-heroku-original-wordmark colored"></i>
-                            </li>
+                            {this.state.rightSkills && this.state.rightSkills.map((devicon, index) => (
+                                <li key={devicon.id}>
+                                    {devicon.title}
+                                    <i className={devicon.link}></i>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                 </div>

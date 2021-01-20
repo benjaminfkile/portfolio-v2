@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import aboutMe from '../AboutStore'
-import url from '../urlStore'
+import DataStore from '../DataStore'
 import './About.css'
 
 class About extends Component {
@@ -21,8 +20,8 @@ class About extends Component {
     }
 
     componentDidMount() {
-        this.dbInterval = setInterval(this.listen4DB, 500)
-        this.changeInerval = setInterval(this.listen4Change, 3000)
+        this.dbInterval = setInterval(this.listen4DB, 100)
+        this.changeInerval = setInterval(this.listen4Update, 1000)
         this.mounted = true
     }
 
@@ -32,39 +31,17 @@ class About extends Component {
     }
 
     listen4DB = () => {
-        if (this.mounted && aboutMe.p1.length > 0 && aboutMe.p2.length > 0) {
+        if (this.mounted && DataStore[0] && DataStore[0].aboutP1.length > 0 && DataStore[0].aboutP2.length > 0) {
             clearInterval(this.dbInterval)
-            this.setState({ db: true, p1: aboutMe.p1[0].p1, p1Id: aboutMe.p1[0].id, p2: aboutMe.p2[0].p2, p2Id: aboutMe.p2[0].id })
+            this.setState({ db: true, p1: DataStore[0].aboutP1[0].p1, p1Id: DataStore[0].aboutP1[0].id, p2: DataStore[0].aboutP2[0].p2, p2Id: DataStore[0].aboutP2[0].id })
         }
     }
 
-    listen4Change = () => {
-        this.getAboutP1()
-        this.getAboutP2()
+    listen4Update = () => {
         // eslint-disable-next-line
-        if (this.mounted && (aboutMe.p1[0].id !== this.state.p1Id) || (aboutMe.p2[0].id !== this.state.p2Id)) {
-            this.setState({ db: true, p1: aboutMe.p1[0].p1, p1Id: aboutMe.p1[0].id, p2: aboutMe.p2[0].p2, p2Id: aboutMe.p2[0].id })
+        if (this.mounted && (DataStore[0].aboutP1[0].id !== this.state.p1Id) || (DataStore[0].aboutP2[0].id !== this.state.p2Id)) {
+            this.setState({ db: true, p1: DataStore[0].aboutP1[0].p1, p1Id: DataStore[0].aboutP1[0].id, p2: DataStore[0].aboutP2[0].p2, p2Id: DataStore[0].aboutP2[0].id })
         }
-        if (aboutMe.p1.length > 1) {
-            aboutMe.p1.pop()
-            aboutMe.p2.pop()
-        }
-    }
-
-    getAboutP1 = () => {
-        fetch(url + 'about-p1')
-            .then(response => response.json())
-            .then(data => {
-                aboutMe.p1.unshift(data[0])
-            }).catch(error => console.log('failed to fetch about'));
-    }
-
-    getAboutP2 = () => {
-        fetch(url + 'about-p2')
-            .then(response => response.json())
-            .then(data => {
-                aboutMe.p2.unshift(data[0])
-            }).catch(error => console.log('failed to fetch about'));
     }
 
     render() {
