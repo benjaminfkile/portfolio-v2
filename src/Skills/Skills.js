@@ -98,8 +98,8 @@ class Skills extends Component {
                         <ul>
                             {this.state.leftSkills && this.state.leftSkills.map((devicon, index) => (
                                 <li key={devicon.id}>
-                                    {devicon.title}
                                     <i className={devicon.link}></i>
+                                    {" " + devicon.title}
                                 </li>
                             ))}
                         </ul>
@@ -111,9 +111,9 @@ class Skills extends Component {
                         <ul>
                             {this.state.rightSkills && this.state.rightSkills.map((devicon, index) => (
                                 <li key={devicon.id}>
-                                    {devicon.title}
-                                    <i className={devicon.link}></i>
-                                </li>
+                                <i className={devicon.link}></i>
+                                {" " + devicon.title}
+                            </li>
                             ))}
                         </ul>
                     </div>
