@@ -38,11 +38,14 @@ class App extends Component {
     if (DataStore.length > 1) {
       DataStore.length = 2
     }
-  }                                                                                                                                          
+  }
 
   render() {
     return (
       <div className="App">
+        {this.state.hasData && !this.state.error && <div className="Desktop_Nav_Wrapper">
+          <Nav />
+        </div>}
         {this.state.hasData && !this.state.error && <div className="Content_Wrapper">
           <Switch>
             <Route exact path='/' component={Home} />
