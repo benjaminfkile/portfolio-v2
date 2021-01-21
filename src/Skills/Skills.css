@@ -31,15 +31,12 @@
     font-size: 25px;
 }
 .Skills_Panel_Two li{
-    font-size: 20px;
+    font-size: 18px;
     color: gray;
 }
 .Front_Skills{
     margin-left: 10px;
-    /* margin-right: 10px; */
-    /* margin-left: auto; */
 }
 .Back_Skills{
     margin-left: 10px;
-    /* margin-right: auto; */
 }

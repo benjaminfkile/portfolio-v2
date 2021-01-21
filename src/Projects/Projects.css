@@ -30,14 +30,14 @@
 }
 .Link_Controls_Header{
     display: flex;
-    margin-left: calc(100vw - 165px);
+    margin-left: calc(100vw - 215px);
 }
 .Link_Controls_Header p{
     color: gray;
     margin: 10px
 }
 .Link_Control_Panel{
-    margin-left: calc(100vw - 160px);
+    margin-left: calc(100vw - 210px);
     width: 140px;
 }
 .Nav_Controls{
@@ -94,8 +94,9 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 8vh;
-    width: 250px;
+    margin-top: 20vh;
+    height: 60vh;
+    border-radius: 10px;
 }
 #collapse-preview{
     display: block;

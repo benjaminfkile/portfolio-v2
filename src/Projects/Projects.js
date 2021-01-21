@@ -5,22 +5,27 @@ import '../Projects/Projects.css'
 
 class Projects extends Component {
 
+    photoDex = -1
     mounted = false
     panDex = 0
     constructor(props) {
         super(props)
         this.state = {
             db: false,
+            mobile: true,
             title: null,
             description: null,
             tech: [],
+            photo: null,
+            preview: false,
+            previewLoaded: false,
             repoMenu: false
         }
     }
 
     componentDidMount() {
         this.mounted = true
-        this.interval = setInterval(this.listen4DB, 500)
+        this.dbInterval = setInterval(this.listen4DB, 500)
     }
 
     componentWillUnmount() {
@@ -29,9 +34,19 @@ class Projects extends Component {
 
     listen4DB = () => {
         if (DataStore[0].projects.length > 0 && this.mounted) {
-            clearInterval(this.interval)
+            clearInterval(this.dbInterval)
             this.setState({ db: true })
             this.pan('-')
+            this.carouselInterval = setInterval(this.carousel, 5000)
+        }
+    }
+
+    carousel = () => {
+        this.photoDex += 1
+        if (this.photoDex < DataStore[0].projects[this.panDex].mobile.length && this.mounted) {
+            this.setState({ photo: DataStore[0].projects[this.panDex].mobile[this.photoDex] })
+        } else {
+            this.photoDex = -1
         }
     }
 
@@ -58,7 +73,19 @@ class Projects extends Component {
             title: DataStore[0].projects[this.panDex].name,
             description: DataStore[0].projects[this.panDex].description,
             tech: techArray,
+            photo: DataStore[0].projects[this.panDex].mobile[this.photoDex]
+
         })
+        this.carousel()
+    }
+
+    togglePreview = () => {
+        if (this.state.preview) {
+            this.setState({ preview: false })
+        } else {
+            this.setState({ preview: true })
+        }
+        this.photoDex = 0
     }
 
     toggleRepo = () => {
@@ -67,6 +94,10 @@ class Projects extends Component {
         } else {
             this.setState({ repoMenu: true })
         }
+    }
+
+    toggleLoaded = () => {
+        this.setState({ previewLoaded: true })
     }
 
     openLink = (args) => {
@@ -92,10 +123,12 @@ class Projects extends Component {
                         <div className="Link_Controls_Header">
                             <p id="first-link-header">visit</p>
                             <p id="center-link-header">repo</p>
+                            <p>img</p>
                         </div>
                         <div className="Link_Control_Panel">
                             <img src="/res/visit.png" alt="" onClick={() => this.openLink(DataStore[0].projects[this.panDex].url)}></img>
                             <img id="center-img" src="/res/repo.png" alt="" onClick={this.toggleRepo}></img>
+                            <img src="/res/preview.png" alt="" onClick={this.togglePreview}></img>
                         </div>
                     </div>}
                     {this.state.repoMenu && <div className="Repo_Controls">
@@ -113,6 +146,11 @@ class Projects extends Component {
                         </div>
                     </div>}
                 </div>}
+                {this.state.preview && this.state.db && <div className="Preview">
+                    <img id="screenshot-loader" src={this.state.photo} alt="" onLoad={this.toggleLoaded}></img>
+                    {this.state.previewLoaded && <img id="screenshot" src={this.state.photo} alt=""></img>}
+                    {this.state.previewLoaded && <img id="collapse-preview" src='./res/collapse.png' alt="" onClick={this.togglePreview}></img>}
+                </div>}
                 {!this.state.previewLoaded && this.state.preview && <div className="Preview_Loading">
                     <Loading />
                 </div>}
@@ -122,5 +160,3 @@ class Projects extends Component {
 }
 
 export default Projects
-
-
