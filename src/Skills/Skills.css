@@ -40,3 +40,33 @@
 .Back_Skills{
     margin-left: 10px;
 }
+
+@media only screen and (min-width: 600px) {
+    .Skills_Panel_One{
+        position: absolute;
+        width: 70vw;
+        left: 15vw;
+        top: 25vh;
+        text-align: center;
+    }
+    #sp1p1{
+        font-size: 60px;
+        margin-bottom: 40px;
+    }
+    #sp1p2{
+        font-size: 25px;
+    }
+    .Skills_Panel_Two{
+        position: absolute;
+        width: 350px;
+        margin-left: calc(50vw - 165px);
+        top: 50vh;
+        /* text-align: center; */
+    }
+    .Skills_Panel_Two p{
+        font-size: 35px;
+    }
+    .Skills_Panel_Two li{
+        font-size: 25px;
+    }
+}

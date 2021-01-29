@@ -30,3 +30,12 @@
   animation: slide-in-fwd-left 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.8s both;
 }
 
+@media only screen and (min-width: 600px) {
+  .Home_Panel_One{
+    margin-top: -15vh;
+  }
+  .Home_Panel_One p{
+    text-align: center;
+    font-size: 60px;
+  }
+}

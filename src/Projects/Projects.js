@@ -17,6 +17,7 @@ class Projects extends Component {
             description: null,
             tech: [],
             photo: null,
+            desktopPhoto: null,
             preview: false,
             previewLoaded: false,
             repoMenu: false
@@ -37,7 +38,7 @@ class Projects extends Component {
             clearInterval(this.dbInterval)
             this.setState({ db: true })
             this.pan('-')
-            this.carouselInterval = setInterval(this.carousel, 5000)
+            this.carouselInterval = setInterval(this.carousel, 4000)
         }
     }
 
@@ -46,7 +47,12 @@ class Projects extends Component {
         if (this.photoDex < DataStore[0].projects[this.panDex].mobile.length && this.mounted) {
             this.setState({ photo: DataStore[0].projects[this.panDex].mobile[this.photoDex] })
         } else {
-            this.photoDex = -1
+            this.photoDex = 0
+        }
+        if (this.photoDex < DataStore[0].projects[this.panDex].desktop.length && this.mounted) {
+            this.setState({ desktopPhoto: DataStore[0].projects[this.panDex].desktop[this.photoDex] })
+        } else {
+            this.photoDex = 0
         }
     }
 
@@ -73,7 +79,8 @@ class Projects extends Component {
             title: DataStore[0].projects[this.panDex].name,
             description: DataStore[0].projects[this.panDex].description,
             tech: techArray,
-            photo: DataStore[0].projects[this.panDex].mobile[this.photoDex]
+            photo: DataStore[0].projects[this.panDex].mobile[this.photoDex],
+            desktopPhoto: DataStore[0].projects[this.panDex].desktop[this.photoDex]
 
         })
         this.carousel()
@@ -149,6 +156,11 @@ class Projects extends Component {
                 {this.state.preview && this.state.db && <div className="Preview">
                     <img id="screenshot-loader" src={this.state.photo} alt="" onLoad={this.toggleLoaded}></img>
                     {this.state.previewLoaded && <img id="screenshot" src={this.state.photo} alt=""></img>}
+                    {this.state.previewLoaded && <img id="collapse-preview" src='./res/collapse.png' alt="" onClick={this.togglePreview}></img>}
+                </div>}
+                {this.state.preview && this.state.db && <div className="Preview_Desktop">
+                    <img id="screenshot-loader" src={this.state.desktopPhoto} alt="" onLoad={this.toggleLoaded}></img>
+                    {this.state.previewLoaded && <img id="screenshot" src={this.state.desktopPhoto} alt=""></img>}
                     {this.state.previewLoaded && <img id="collapse-preview" src='./res/collapse.png' alt="" onClick={this.togglePreview}></img>}
                 </div>}
                 {!this.state.previewLoaded && this.state.preview && <div className="Preview_Loading">

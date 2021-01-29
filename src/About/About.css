@@ -7,10 +7,19 @@
 	animation: slide-in-fwd-left 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 
 }
-.About_Panel_One p{
+
+#ap1p1{
     font-size: 35px;
     margin-left: 10px;
     margin-right: 10px;
+}
+
+
+.About_Panel_One p{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+
 }
 .About_Panel_Two p{
     color: gray;
@@ -21,3 +30,34 @@
     -webkit-animation: slide-in-fwd-left 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s both;
 	animation: slide-in-fwd-left 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s both;
 }
+
+@media only screen and (min-width: 600px) {
+    .About_Panel_One{
+        position: absolute;
+        width: 100vw;
+        top: 25vh;
+        text-align: center;
+    }
+
+    #ap1p1{
+        font-size: 60px;
+    }
+
+    #ap1p2, #ap1p3{
+        color: gray; 
+        font-size: 25px;
+        text-decoration: underline;
+     }
+
+    .About_Panel_Two{
+        position: absolute;
+        width: 60vw;
+        top: 45vh;
+        left: 20vw;
+        text-align: center;
+    }
+
+    .About_Panel_Two p{
+        font-size: 25px;
+    }
+  }

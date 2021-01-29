@@ -25,19 +25,28 @@ html, body{
   -webkit-animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
   animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
-.Controls{
-  -webkit-animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s both;
-  animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s both;
-}
+/* .Controls{
+
+} */
 
 .Content_Wrapper{
   height: 100vh;
   width: calc(100vw - 60px);
 }
 
-@media only screen and (max-width: 600px) {
-  .Desktop_Nav_Wrapper{
+.Desktop_Nav_Wrapper{
+  display: none;
+}
+
+@media only screen and (min-width: 600px) {
+  .Nav_Wrapper{
     display: none;
+  }
+  .Desktop_Nav_Wrapper{
+    display: initial;
+    position: absolute;
+    width: 100vw;
+    height: 50px;
   }
 }
 
@@ -91,3 +100,27 @@ html, body{
   }
 }
 
+ @-webkit-keyframes scale-in-center {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes scale-in-center {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}

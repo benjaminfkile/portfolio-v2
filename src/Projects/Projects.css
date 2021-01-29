@@ -28,6 +28,9 @@
     bottom: 10px;
     width: 100%;
 }
+.Controls img{
+    cursor: pointer;
+}
 .Link_Controls_Header{
     display: flex;
     margin-left: calc(100vw - 215px);
@@ -44,12 +47,15 @@
     display: flex;
     margin-left: calc(100vw - 160px);
     width: 95px;
+    cursor: pointer;
 }
 #previous-btn{
     margin-right: 15px;
+    cursor: pointer;
 }
 #next-btn{
     margin-left: 15px;
+    cursor: pointer;
 }
 #center-img{
     margin-left: 20px;
@@ -86,6 +92,7 @@
 }
 #client-img, #back-img{
     margin-right: 15px;
+    cursor: pointer;
 }
 #screenshot-loader{
     display: none;
@@ -104,4 +111,80 @@
     margin-right: auto;
     margin-top: 20px;
     width: 30px;
+    cursor: pointer;
 }
+
+.Preview_Desktop{
+    display: none;
+}
+
+@media only screen and (min-width: 600px) {
+
+    .Preview{
+        display: none;
+    }
+
+    .Preview_Desktop{
+        position: absolute;
+        display: initial;
+        width: 100vw;
+    }
+
+    #screenshot{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 33.125vh;
+        height: 33.75vh;
+        border-radius: 0px;
+    }
+
+
+    .Projects_Panel_One{
+        position: absolute;
+        width: 70vw;
+        left: 15vw;
+        margin-top: 0px;
+        top: 25vh;
+    }
+
+    #title{
+        font-size: 55px;
+    }
+
+    #description{
+        font-size: 25px;
+    }
+
+    .Controls{
+        position: initial;
+        margin-top: 25px;
+    }
+    .Link_Controls_Header{
+        display: flex;
+        margin-left: 0px;
+    }
+    .Link_Control_Panel{
+        margin-left: 0px;
+        width: 140px;
+    }
+    .Nav_Controls{
+        display: flex;
+        margin-left: 0px;
+        width: 95px;
+    }
+    .Repo_Controls{
+        position: initial;
+        margin-top: 25px;
+    }
+    .Repo_Controls_Header{
+        margin-left: 0px;
+    }
+    .Repo_Link_Controls{
+        margin-left: 0px;
+    }
+    #repo-nag{
+        margin-left: 10px;
+    }
+}
+

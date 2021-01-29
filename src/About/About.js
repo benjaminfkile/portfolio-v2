@@ -49,6 +49,8 @@ class About extends Component {
             <div className="About">
                 <div className="About_Panel_One">
                     <p id="ap1p1">About me</p>
+                    <p id="ap1p2">From Columbia Falls Mt</p>
+                    <p id="ap1p3">Studied at Thinkful</p>
                 </div>
                 <div className="About_Panel_Two">
                     <p id="ap2p1">{this.state.p1}</p>
