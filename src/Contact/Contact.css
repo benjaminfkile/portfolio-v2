@@ -97,3 +97,20 @@ textarea {
     cursor: pointer;
     color: rgb(255,118,21);
 }
+
+@media only screen and (min-width: 600px) {
+    .Contact{
+        position: absolute;
+        margin-top: 0px;
+        top: 25vh;
+        width: 50vw;
+        left: 25vw;
+    }
+    .Name_Email p{
+        font-size: 55px;
+    }
+    textarea {
+
+        width: 50vw;
+    }
+}

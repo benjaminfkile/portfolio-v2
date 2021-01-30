@@ -20,7 +20,8 @@ class Projects extends Component {
             desktopPhoto: null,
             preview: false,
             previewLoaded: false,
-            repoMenu: false
+            repoMenu: false,
+            animateControls: true
         }
     }
 
@@ -97,9 +98,9 @@ class Projects extends Component {
 
     toggleRepo = () => {
         if (this.state.repoMenu) {
-            this.setState({ repoMenu: false })
+            this.setState({ repoMenu: false, animateControls: false })
         } else {
-            this.setState({ repoMenu: true })
+            this.setState({ repoMenu: true, animateControls: false })
         }
     }
 
@@ -122,7 +123,23 @@ class Projects extends Component {
                             <li dangerouslySetInnerHTML={{ __html: tech }} key={Math.random()}></li>
                         ))}
                     </ul>
-                    {!this.state.repoMenu && <div className="Controls">
+                    {!this.state.repoMenu && this.state.animateControls && <div className="Animated_Controls">
+                        <div className="Nav_Controls">
+                            <img id="previous-btn" src="/res/previous.png" alt="" onClick={() => this.pan('-')}></img>
+                            <img id="next-btn" src='res/next.png' alt="" onClick={() => this.pan('+')}></img>
+                        </div>
+                        <div className="Link_Controls_Header">
+                            <p id="first-link-header">visit</p>
+                            <p id="center-link-header">repo</p>
+                            <p>img</p>
+                        </div>
+                        <div className="Link_Control_Panel">
+                            <img src="/res/visit.png" alt="" onClick={() => this.openLink(DataStore[0].projects[this.panDex].url)}></img>
+                            <img id="center-img" src="/res/repo.png" alt="" onClick={this.toggleRepo}></img>
+                            <img src="/res/preview.png" alt="" onClick={this.togglePreview}></img>
+                        </div>
+                    </div>}
+                    {!this.state.repoMenu && !this.state.animateControls && <div className="Controls">
                         <div className="Nav_Controls">
                             <img id="previous-btn" src="/res/previous.png" alt="" onClick={() => this.pan('-')}></img>
                             <img id="next-btn" src='res/next.png' alt="" onClick={() => this.pan('+')}></img>

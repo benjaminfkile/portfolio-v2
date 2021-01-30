@@ -14,6 +14,12 @@
     margin-right: 10px;
 }
 
+#ap1p2, #ap1p3{
+    color: gray;
+    text-decoration: underline;
+    font-size: 20px;
+}
+
 
 .About_Panel_One p{
     margin-left: 10px;

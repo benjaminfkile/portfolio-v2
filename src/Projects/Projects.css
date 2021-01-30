@@ -28,6 +28,13 @@
     bottom: 10px;
     width: 100%;
 }
+.Animated_Controls{
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    -webkit-animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
 .Controls img{
     cursor: pointer;
 }
@@ -142,8 +149,8 @@
 
     .Projects_Panel_One{
         position: absolute;
-        width: 70vw;
-        left: 15vw;
+        width: 65vw;
+        left: 16.25vw;
         margin-top: 0px;
         top: 25vh;
     }
@@ -153,10 +160,14 @@
     }
 
     #description{
-        font-size: 25px;
+        font-size: 22px;
     }
 
     .Controls{
+        position: initial;
+        margin-top: 25px;
+    }
+    .Animated_Controls{
         position: initial;
         margin-top: 25px;
     }
@@ -173,12 +184,15 @@
         margin-left: 0px;
         width: 95px;
     }
+    #first-link-header{
+        margin-left: 2px;
+    }
     .Repo_Controls{
         position: initial;
         margin-top: 25px;
     }
     .Repo_Controls_Header{
-        margin-left: 0px;
+        margin-left: 35px;
     }
     .Repo_Link_Controls{
         margin-left: 0px;
@@ -187,4 +201,22 @@
         margin-left: 10px;
     }
 }
+
+@media only screen and (min-width: 800px) {
+    #screenshot{
+        margin-top: 25vh;
+        height: 50vh;
+
+    }
+
+}
+@media only screen and (min-width: 1000px) {
+    #screenshot{
+        margin-top: 20vh;
+        height: 60vh;
+
+    }
+
+}
+
 
