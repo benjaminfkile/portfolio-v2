@@ -43,12 +43,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.state.hasData && !this.state.error && <div className="Desktop_Nav_Wrapper">
-          <Nav />
-        </div>}
-        {this.state.hasData && !this.state.error && <div className="Nav_Wrapper">
-          <Nav />
-        </div>}
         {this.state.hasData && !this.state.error && <div className="Content_Wrapper">
           <Switch>
             <Route exact path='/' component={Home} />
@@ -58,6 +52,12 @@ class App extends Component {
             <Route path='/contact' component={Contact} />
             <Route component={Home} />
           </Switch>
+        </div>}
+        {this.state.hasData && !this.state.error && <div className="Desktop_Nav_Wrapper">
+          <Nav />
+        </div>}
+        {this.state.hasData && !this.state.error && <div className="Nav_Wrapper">
+          <Nav />
         </div>}
         {!this.state.hasData && !this.state.error && <div className="Gears">
           <Loading />
