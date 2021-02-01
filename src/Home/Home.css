@@ -31,11 +31,24 @@
 }
 
 @media only screen and (min-width: 600px) {
+
+  .Home{
+    display: flex;
+  }
+
   .Home_Panel_One{
-    margin-top: -15vh;
+    /* margin-top: -15vh; */
+    position: absolute;
+    width: 50vw;
+    height: 25vh;
+    top: calc(25vh + 50px);
+    left: 0vw;
+  
   }
   .Home_Panel_One p{
-    text-align: center;
+    /* text-align: center; */
+    margin-left: 5vw;
     font-size: 60px;
   }
+  
 }

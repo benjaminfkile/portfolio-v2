@@ -37,8 +37,21 @@ class Projects extends Component {
     listen4DB = () => {
         if (DataStore[0].projects.length > 0 && this.mounted) {
             clearInterval(this.dbInterval)
-            this.setState({ db: true })
-            this.pan('-')
+            let techArray = []
+
+            for (let i = 0; i < DataStore[0].projects[this.panDex].tech.length; i++) {
+                techArray.push("<i class=\"" + DataStore[0].projects[this.panDex].tech[i] + "\"></i>")
+            }
+            this.setState({
+                title: DataStore[0].projects[this.panDex].name,
+                description: DataStore[0].projects[this.panDex].description,
+                tech: techArray,
+                photo: DataStore[0].projects[this.panDex].mobile[this.photoDex],
+                desktopPhoto: DataStore[0].projects[this.panDex].desktop[this.photoDex],
+                db: true
+    
+            })
+            this.carousel()
             this.carouselInterval = setInterval(this.carousel, 4000)
         }
     }
@@ -81,7 +94,8 @@ class Projects extends Component {
             description: DataStore[0].projects[this.panDex].description,
             tech: techArray,
             photo: DataStore[0].projects[this.panDex].mobile[this.photoDex],
-            desktopPhoto: DataStore[0].projects[this.panDex].desktop[this.photoDex]
+            desktopPhoto: DataStore[0].projects[this.panDex].desktop[this.photoDex],
+            animateControls: false
 
         })
         this.carousel()
@@ -123,7 +137,24 @@ class Projects extends Component {
                             <li dangerouslySetInnerHTML={{ __html: tech }} key={Math.random()}></li>
                         ))}
                     </ul>
-                    {!this.state.repoMenu && this.state.animateControls && <div className="Animated_Controls">
+                    {DataStore[0].projects[this.panDex].url !== "f" && <div className="Multiple_Repos">
+                        {!this.state.repoMenu && this.state.animateControls && <div className="Animated_Controls">
+                            <div className="Nav_Controls">
+                                <img id="previous-btn" src="/res/previous.png" alt="" onClick={() => this.pan('-')}></img>
+                                <img id="next-btn" src='res/next.png' alt="" onClick={() => this.pan('+')}></img>
+                            </div>
+                            <div className="Link_Controls_Header">
+                                <p id="first-link-header">visit</p>
+                                <p id="center-link-header">repo</p>
+                                <p>img</p>
+                            </div>
+                            <div className="Link_Control_Panel">
+                                <img src="/res/visit.png" alt="" onClick={() => this.openLink(DataStore[0].projects[this.panDex].url)}></img>
+                                <img id="center-img" src="/res/repo.png" alt="" onClick={this.toggleRepo}></img>
+                                <img src="/res/preview.png" alt="" onClick={this.togglePreview}></img>
+                            </div>
+                        </div>}
+                        {!this.state.repoMenu && !this.state.animateControls && <div className="Controls">
                         <div className="Nav_Controls">
                             <img id="previous-btn" src="/res/previous.png" alt="" onClick={() => this.pan('-')}></img>
                             <img id="next-btn" src='res/next.png' alt="" onClick={() => this.pan('+')}></img>
@@ -139,21 +170,36 @@ class Projects extends Component {
                             <img src="/res/preview.png" alt="" onClick={this.togglePreview}></img>
                         </div>
                     </div>}
-                    {!this.state.repoMenu && !this.state.animateControls && <div className="Controls">
+                    </div>}
+                    {DataStore[0].projects[this.panDex].url === "f" && <div className="Single_Repo">
+                        {!this.state.repoMenu && this.state.animateControls && <div className="Animated_Controls">
+                            <div className="Nav_Controls">
+                                <img id="previous-btn" src="/res/previous.png" alt="" onClick={() => this.pan('-')}></img>
+                                <img id="next-btn" src='res/next.png' alt="" onClick={() => this.pan('+')}></img>
+                            </div>
+                            <div className="Link_Controls_Header">
+                                <p id="center-link-header">repo</p>
+                                <p>img</p>
+                            </div>
+                            <div className="Link_Control_Panel">
+                                <img id="repo-img" src="/res/repo.png" alt="" onClick={() => this.openLink(DataStore[0].projects[this.panDex].repo[0])}></img>
+                                <img src="/res/preview.png" alt="" onClick={this.togglePreview}></img>
+                            </div>
+                        </div>}
+                        {!this.state.repoMenu && !this.state.animateControls && <div className="Controls">
                         <div className="Nav_Controls">
                             <img id="previous-btn" src="/res/previous.png" alt="" onClick={() => this.pan('-')}></img>
                             <img id="next-btn" src='res/next.png' alt="" onClick={() => this.pan('+')}></img>
                         </div>
                         <div className="Link_Controls_Header">
-                            <p id="first-link-header">visit</p>
                             <p id="center-link-header">repo</p>
                             <p>img</p>
                         </div>
                         <div className="Link_Control_Panel">
-                            <img src="/res/visit.png" alt="" onClick={() => this.openLink(DataStore[0].projects[this.panDex].url)}></img>
-                            <img id="center-img" src="/res/repo.png" alt="" onClick={this.toggleRepo}></img>
+                            <img id="repo-img" src="/res/repo.png" alt="" onClick={() => this.openLink(DataStore[0].projects[this.panDex].repo[0])}></img>
                             <img src="/res/preview.png" alt="" onClick={this.togglePreview}></img>
                         </div>
+                    </div>}
                     </div>}
                     {this.state.repoMenu && <div className="Repo_Controls">
                         <div className="Repo_Nag">

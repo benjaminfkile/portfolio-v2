@@ -9,6 +9,7 @@ import Projects from './Projects/Projects'
 import Contact from './Contact/Contact'
 import DataStore from './DataStore'
 import Loading from './Loading/Loading'
+import Background from './Background/Background'
 import './App.css';
 
 class App extends Component {
@@ -22,7 +23,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.dataInterval = setInterval(this.fetchData, 1000)
+    this.dataInterval = setInterval(this.fetchData, 30000)
     this.fetchData()
   }
 
@@ -43,6 +44,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Background />
         {this.state.hasData && !this.state.error && <div className="Content_Wrapper">
           <Switch>
             <Route exact path='/' component={Home} />

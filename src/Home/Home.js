@@ -4,6 +4,11 @@ import './Home.css'
 
 class Home extends Component {
 
+    openLink = () => {
+        window.open("https://github.com/benjaminfkile");
+        console.log('asdfasdf')
+    }
+
     render() {
         return (
             <div className="Home">
