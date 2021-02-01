@@ -34,7 +34,6 @@ class App extends Component {
         DataStore.unshift(data)
         if (!this.state.hasData) {
           this.setState({ hasData: true })
-          DataStore[0].projects = DataStore[0].projects.sort((a, b) => (a.order > b.order) ? 1 : -1)
         }
       }).catch(error => this.setState({ error: true }));
     if (DataStore.length > 1) {
