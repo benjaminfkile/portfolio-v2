@@ -130,6 +130,23 @@
     cursor: pointer;
 }
 
+.Single_Link_Controls_Header{
+    display: flex;
+    margin-left: calc(100vw - 160px);
+}
+.Single_Link_Controls_Header p{
+    color: gray;
+    margin: 10px
+}
+
+.Single_Link_Control_Panel{
+    margin-left: calc(100vw - 150px);
+}
+
+#single-repo-img{
+    margin-right: 15px;
+}
+
 @media only screen and (min-width: 600px) {
 
     .Preview{
@@ -208,6 +225,18 @@
     #repo-img{
         margin-right: 20px;
         margin-left: 7px;
+    }
+    #single-repo-img{
+        margin-left: 0px;
+        margin-right: 15px;
+    }
+
+    .Single_Link_Controls_Header{
+        margin-left: -2.5px;
+    }
+    
+    .Single_Link_Control_Panel{
+        margin-left: 5px;
     }
 }
 

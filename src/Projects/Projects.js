@@ -177,13 +177,13 @@ class Projects extends Component {
                                 <img id="previous-btn" src="/res/previous.png" alt="" onClick={() => this.pan('-')}></img>
                                 <img id="next-btn" src='res/next.png' alt="" onClick={() => this.pan('+')}></img>
                             </div>
-                            <div className="Link_Controls_Header">
+                            <div className="Single_Link_Controls_Header">
                                 <p id="center-link-header">repo</p>
                                 <p>img</p>
                             </div>
-                            <div className="Link_Control_Panel">
-                                <img id="repo-img" src="/res/repo.png" alt="" onClick={() => this.openLink(DataStore[0].projects[this.panDex].repo[0])}></img>
-                                <img src="/res/preview.png" alt="" onClick={this.togglePreview}></img>
+                            <div className="Single_Link_Control_Panel">
+                                <img id="single-repo-img" src="/res/repo.png" alt="" onClick={() => this.openLink(DataStore[0].projects[this.panDex].repo[0])}></img>
+                                <img id="single-repo-preview-btn" src="/res/preview.png" alt="" onClick={this.togglePreview}></img>
                             </div>
                         </div>}
                         {!this.state.repoMenu && !this.state.animateControls && <div className="Controls">
@@ -191,13 +191,13 @@ class Projects extends Component {
                             <img id="previous-btn" src="/res/previous.png" alt="" onClick={() => this.pan('-')}></img>
                             <img id="next-btn" src='res/next.png' alt="" onClick={() => this.pan('+')}></img>
                         </div>
-                        <div className="Link_Controls_Header">
+                        <div className="Single_Link_Controls_Header">
                             <p id="center-link-header">repo</p>
                             <p>img</p>
                         </div>
-                        <div className="Link_Control_Panel">
-                            <img id="repo-img" src="/res/repo.png" alt="" onClick={() => this.openLink(DataStore[0].projects[this.panDex].repo[0])}></img>
-                            <img src="/res/preview.png" alt="" onClick={this.togglePreview}></img>
+                        <div className="Single_Link_Control_Panel">
+                            <img id="single-repo-img" src="/res/repo.png" alt="" onClick={() => this.openLink(DataStore[0].projects[this.panDex].repo[0])}></img>
+                            <img id="single-repo-preview-btn" src="/res/preview.png" alt="" onClick={this.togglePreview}></img>
                         </div>
                     </div>}
                     </div>}
