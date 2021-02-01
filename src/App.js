@@ -45,7 +45,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Background />
+        {this.state.hasData && <Background />}
         {this.state.hasData && !this.state.error && <div className="Content_Wrapper">
           <Switch>
             <Route exact path='/' component={Home} />
