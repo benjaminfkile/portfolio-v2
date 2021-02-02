@@ -56,7 +56,6 @@ class Projects extends Component {
             this.carousel()
             this.carouselInterval = setInterval(this.carousel, 3000)
         }
-        console.log(this.state.projects)
     }
 
     carousel = () => {
@@ -71,7 +70,6 @@ class Projects extends Component {
     }
 
     pan = (args) => {
-        console.log('pan')
         if (args && args === '+') {
             if (this.panDex > this.state.projects.length - 2) {
                 this.panDex = 0
