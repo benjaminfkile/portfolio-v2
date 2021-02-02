@@ -21,7 +21,8 @@ class Projects extends Component {
             preview: false,
             previewLoaded: false,
             repoMenu: false,
-            animateControls: true
+            animateControls: true,
+            projects: null
         }
     }
 
@@ -38,68 +39,64 @@ class Projects extends Component {
         if (DataStore[0].projects.length > 0 && this.mounted) {
             clearInterval(this.dbInterval)
             let techArray = []
-
+            DataStore[0].projects = DataStore[0].projects.sort((a, b) => (a.order > b.order) ? 1 : -1)
             for (let i = 0; i < DataStore[0].projects[this.panDex].tech.length; i++) {
                 techArray.push("<i class=\"" + DataStore[0].projects[this.panDex].tech[i] + "\"></i>")
             }
-            DataStore[0].projects = DataStore[0].projects.sort((a, b) => (a.order > b.order) ? 1 : -1)
+
             this.setState({
                 title: DataStore[0].projects[this.panDex].name,
                 description: DataStore[0].projects[this.panDex].description,
                 tech: techArray,
                 photo: DataStore[0].projects[this.panDex].mobile[this.photoDex],
                 desktopPhoto: DataStore[0].projects[this.panDex].desktop[this.photoDex],
-                db: true
-    
+                db: true,
+                projects: DataStore[0].projects.sort((a, b) => (a.order > b.order) ? 1 : -1)
             })
             this.carousel()
-            this.carouselInterval = setInterval(this.carousel, 4000)
+            this.carouselInterval = setInterval(this.carousel, 3000)
         }
+        console.log(this.state.projects)
     }
 
     carousel = () => {
         this.photoDex += 1
-        if (this.photoDex < DataStore[0].projects[this.panDex].mobile.length && this.mounted) {
-            this.setState({ photo: DataStore[0].projects[this.panDex].mobile[this.photoDex] })
-        } else {
+        if (this.photoDex > this.state.projects[this.panDex].mobile.length - 1) {
             this.photoDex = 0
         }
-        if (this.photoDex < DataStore[0].projects[this.panDex].desktop.length && this.mounted) {
-            this.setState({ desktopPhoto: DataStore[0].projects[this.panDex].desktop[this.photoDex] })
-        } else {
-            this.photoDex = 0
-        }
+        this.setState({
+            photo: this.state.projects[this.panDex].mobile[this.photoDex],
+            desktopPhoto: this.state.projects[this.panDex].desktop[this.photoDex]
+        })
     }
 
     pan = (args) => {
+        console.log('pan')
         if (args && args === '+') {
-            if (this.panDex > DataStore[0].projects.length - 2) {
+            if (this.panDex > this.state.projects.length - 2) {
                 this.panDex = 0
             } else {
                 this.panDex += 1
             }
         } else {
             if (this.panDex === 0) {
-                this.panDex = DataStore[0].projects.length - 1
+                this.panDex = this.state.projects.length - 1
             } else {
                 this.panDex -= 1
             }
         }
         let techArray = []
 
-        for (let i = 0; i < DataStore[0].projects[this.panDex].tech.length; i++) {
-            techArray.push("<i class=\"" + DataStore[0].projects[this.panDex].tech[i] + "\"></i>")
+        for (let i = 0; i < this.state.projects[this.panDex].tech.length; i++) {
+            techArray.push("<i class=\"" + this.state.projects[this.panDex].tech[i] + "\"></i>")
         }
         this.setState({
-            title: DataStore[0].projects[this.panDex].name,
-            description: DataStore[0].projects[this.panDex].description,
+            title: this.state.projects[this.panDex].name,
+            description: this.state.projects[this.panDex].description,
             tech: techArray,
-            photo: DataStore[0].projects[this.panDex].mobile[this.photoDex],
-            desktopPhoto: DataStore[0].projects[this.panDex].desktop[this.photoDex],
             animateControls: false
 
         })
-        this.carousel()
     }
 
     togglePreview = () => {
@@ -108,7 +105,7 @@ class Projects extends Component {
         } else {
             this.setState({ preview: true })
         }
-        this.photoDex = 0
+        this.photoDex = -1
     }
 
     toggleRepo = () => {
@@ -150,27 +147,27 @@ class Projects extends Component {
                                 <p>img</p>
                             </div>
                             <div className="Link_Control_Panel">
-                                <img src="/res/visit.png" alt="" onClick={() => this.openLink(DataStore[0].projects[this.panDex].url)}></img>
+                                <img src="/res/visit.png" alt="" onClick={() => this.openLink(this.state.projects[this.panDex].url)}></img>
                                 <img id="center-img" src="/res/repo.png" alt="" onClick={this.toggleRepo}></img>
                                 <img src="/res/preview.png" alt="" onClick={this.togglePreview}></img>
                             </div>
                         </div>}
                         {!this.state.repoMenu && !this.state.animateControls && <div className="Controls">
-                        <div className="Nav_Controls">
-                            <img id="previous-btn" src="/res/previous.png" alt="" onClick={() => this.pan('-')}></img>
-                            <img id="next-btn" src='res/next.png' alt="" onClick={() => this.pan('+')}></img>
-                        </div>
-                        <div className="Link_Controls_Header">
-                            <p id="first-link-header">visit</p>
-                            <p id="center-link-header">repo</p>
-                            <p>img</p>
-                        </div>
-                        <div className="Link_Control_Panel">
-                            <img src="/res/visit.png" alt="" onClick={() => this.openLink(DataStore[0].projects[this.panDex].url)}></img>
-                            <img id="center-img" src="/res/repo.png" alt="" onClick={this.toggleRepo}></img>
-                            <img src="/res/preview.png" alt="" onClick={this.togglePreview}></img>
-                        </div>
-                    </div>}
+                            <div className="Nav_Controls">
+                                <img id="previous-btn" src="/res/previous.png" alt="" onClick={() => this.pan('-')}></img>
+                                <img id="next-btn" src='res/next.png' alt="" onClick={() => this.pan('+')}></img>
+                            </div>
+                            <div className="Link_Controls_Header">
+                                <p id="first-link-header">visit</p>
+                                <p id="center-link-header">repo</p>
+                                <p>img</p>
+                            </div>
+                            <div className="Link_Control_Panel">
+                                <img src="/res/visit.png" alt="" onClick={() => this.openLink(this.state.projects[this.panDex].url)}></img>
+                                <img id="center-img" src="/res/repo.png" alt="" onClick={this.toggleRepo}></img>
+                                <img src="/res/preview.png" alt="" onClick={this.togglePreview}></img>
+                            </div>
+                        </div>}
                     </div>}
                     {DataStore[0].projects[this.panDex].url === "f" && <div className="Single_Repo">
                         {!this.state.repoMenu && this.state.animateControls && <div className="Animated_Controls">
@@ -183,24 +180,24 @@ class Projects extends Component {
                                 <p>img</p>
                             </div>
                             <div className="Single_Link_Control_Panel">
-                                <img id="single-repo-img" src="/res/repo.png" alt="" onClick={() => this.openLink(DataStore[0].projects[this.panDex].repo[0])}></img>
+                                <img id="single-repo-img" src="/res/repo.png" alt="" onClick={() => this.openLink(this.state.projects[this.panDex].repo[0])}></img>
                                 <img id="single-repo-preview-btn" src="/res/preview.png" alt="" onClick={this.togglePreview}></img>
                             </div>
                         </div>}
                         {!this.state.repoMenu && !this.state.animateControls && <div className="Controls">
-                        <div className="Nav_Controls">
-                            <img id="previous-btn" src="/res/previous.png" alt="" onClick={() => this.pan('-')}></img>
-                            <img id="next-btn" src='res/next.png' alt="" onClick={() => this.pan('+')}></img>
-                        </div>
-                        <div className="Single_Link_Controls_Header">
-                            <p id="center-link-header">repo</p>
-                            <p>img</p>
-                        </div>
-                        <div className="Single_Link_Control_Panel">
-                            <img id="single-repo-img" src="/res/repo.png" alt="" onClick={() => this.openLink(DataStore[0].projects[this.panDex].repo[0])}></img>
-                            <img id="single-repo-preview-btn" src="/res/preview.png" alt="" onClick={this.togglePreview}></img>
-                        </div>
-                    </div>}
+                            <div className="Nav_Controls">
+                                <img id="previous-btn" src="/res/previous.png" alt="" onClick={() => this.pan('-')}></img>
+                                <img id="next-btn" src='res/next.png' alt="" onClick={() => this.pan('+')}></img>
+                            </div>
+                            <div className="Single_Link_Controls_Header">
+                                <p id="center-link-header">repo</p>
+                                <p>img</p>
+                            </div>
+                            <div className="Single_Link_Control_Panel">
+                                <img id="single-repo-img" src="/res/repo.png" alt="" onClick={() => this.openLink(this.state.projects[this.panDex].repo[0])}></img>
+                                <img id="single-repo-preview-btn" src="/res/preview.png" alt="" onClick={this.togglePreview}></img>
+                            </div>
+                        </div>}
                     </div>}
                     {this.state.repoMenu && <div className="Repo_Controls">
                         <div className="Repo_Nag">
@@ -212,8 +209,8 @@ class Projects extends Component {
                         </div>
                         <div className="Repo_Link_Controls">
                             <img src="/res/previous.png" id="back-img" alt="" onClick={this.toggleRepo}></img>
-                            <img src="/res/client.png" id="client-img" alt="" onClick={() => this.openLink(DataStore[0].projects[this.panDex].repo[0])}></img>
-                            <img src="/res/api.png" id="client-img" alt="" onClick={() => this.openLink(DataStore[0].projects[this.panDex].repo[1])}></img>
+                            <img src="/res/client.png" id="client-img" alt="" onClick={() => this.openLink(this.state.projects[this.panDex].repo[0])}></img>
+                            <img src="/res/api.png" id="client-img" alt="" onClick={() => this.openLink(this.state.projects[this.panDex].repo[1])}></img>
                         </div>
                     </div>}
                 </div>}
