@@ -39,7 +39,7 @@ class Projects extends Component {
         if (DataStore[0].projects.length > 0 && this.mounted) {
             clearInterval(this.dbInterval)
             let techArray = []
-            DataStore[0].projects = DataStore[0].projects.sort((a, b) => (a.order > b.order) ? 1 : -1)
+            // DataStore[0].projects = DataStore[0].projects.sort((a, b) => (a.order > b.order) ? 1 : -1)
             for (let i = 0; i < DataStore[0].projects[this.panDex].tech.length; i++) {
                 techArray.push("<i class=\"" + DataStore[0].projects[this.panDex].tech[i] + "\"></i>")
             }
@@ -123,6 +123,10 @@ class Projects extends Component {
     }
 
     render() {
+
+        console.log(this.panDex)
+        console.log(this.state.projects)
+
         return (
             <div className="Projects">
                 {!this.state.preview && this.state.db && <div className="Projects_Panel_One">

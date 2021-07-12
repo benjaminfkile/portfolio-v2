@@ -113,8 +113,7 @@ class Skills extends Component {
                                 <li key={devicon.id}>
                                 <i className={devicon.link}></i>
                                 {" " + devicon.title}
-                            </li>
-                            ))}
+                            </li>))}
                         </ul>
                     </div>
                 </div>
